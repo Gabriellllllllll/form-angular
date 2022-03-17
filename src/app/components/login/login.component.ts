@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +9,48 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup;
+  loading = false;
+
+  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar) { 
+    this.form = this.fb.group({
+      usuario: ['', Validators.required],
+      senha: ['', Validators.required]
+    })
+  }
 
   ngOnInit(): void {
+  }
+
+  entrar(){
+    const usuario = this.form.value.usuario;
+    const senha = this.form.value.senha;
+
+    if(usuario == 'gabriel' && senha == '123'){
+      //login bem sucedido
+      this.fakeLoading();
+    }else{
+      //mostra mensagem de error
+      this.error();
+      this.form.reset();
+    }
+  }
+
+  error(){
+    this._snackBar.open('Usario ou senha invalido', '', {
+      duration: 5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom'
+    })
+  }
+
+  fakeLoading(){
+    this.loading = true;
+    setTimeout(() => {
+
+      // redirecionamos ao dashboard
+      this.loading = false;
+    }, 1500);
   }
 
 }
