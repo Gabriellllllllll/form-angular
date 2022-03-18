@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Usuario } from 'src/app/interfaces/usuario';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -11,24 +12,23 @@ import { Usuario } from 'src/app/interfaces/usuario';
 })
 export class UsuariosComponent implements OnInit {
 
-  listUsuarios: Usuario[] = [
-    {cpf: '1', nome: 'Gabriel', sobrenome: 'Maciel', sexo: 'Masculino'},
-    {cpf: '2', nome: 'Juan', sobrenome: 'Gomes', sexo: 'Masculino'},
-    {cpf: '3', nome: 'Marta', sobrenome: 'Garcia', sexo: 'Feminino'},
-    {cpf: '4', nome: 'Victor', sobrenome: 'Lima', sexo: 'Masculino'},
-    {cpf: '5', nome: 'Maria', sobrenome: 'Mendes', sexo: 'Feminino'},
-    {cpf: '6', nome: 'João', sobrenome: 'Souza', sexo: 'Masculino'},
-  ];
+  listUsuarios: Usuario [] = [];
   
   displayedColumns: string[] = ['cpf', 'nome', 'sobrenome', 'sexo', 'acoes'];
-  dataSource = new MatTableDataSource(this.listUsuarios);
+  dataSource!: MatTableDataSource<any>; 
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor() { }
+  constructor(private _usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
+    this.carregarUsuarios();
+  }
+
+  carregarUsuarios(){
+    this.listUsuarios = this._usuarioService.getUsuario();
+    this.dataSource = new MatTableDataSource(this.listUsuarios)
   }
 
   ngAfterViewInit() {
@@ -39,6 +39,12 @@ export class UsuariosComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  apagarUsuario(index: number){
+    console.log(index);
+    this._usuarioService.apagarUsuario(index);
+    this.carregarUsuarios();
   }
 
 }
