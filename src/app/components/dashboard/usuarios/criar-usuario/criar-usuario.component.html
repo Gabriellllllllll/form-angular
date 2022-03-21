@@ -4,12 +4,12 @@
     </mat-toolbar>
 
     <mat-card style="margin-top: 10px">
-        <form>
+        <form [formGroup]="form" (ngSubmit)="adicionarUsuario()">
             <mat-grid-list cols="4" rowHeight="70px">
                 <mat-grid-tile [colspan]= "1" [rowspan]= "1">
                     <mat-form-field class="largura">
                         <mat-label>CPF</mat-label>
-                        <input matInput>
+                        <input matInput formControlName="cpf">
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]= "3" [rowspan]= "5">
@@ -18,19 +18,19 @@
                 <mat-grid-tile [colspan]= "1" [rowspan]= "1">
                     <mat-form-field class="largura">
                         <mat-label>Nome</mat-label>
-                        <input matInput>
+                        <input matInput formControlName="nome">
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]= "1" [rowspan]= "1">
                     <mat-form-field class="largura">
                         <mat-label>Sobrenome</mat-label>
-                        <input matInput>
+                        <input matInput formControlName="sobrenome">
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]= "1" [rowspan]= "1">
                     <mat-form-field class="largura">
                         <mat-label>Sexo</mat-label>
-                        <mat-select>
+                        <mat-select formControlName="sexo">
                           <mat-option *ngFor="let item of sexo" [value]="item">
                             {{item}}
                           </mat-option>
@@ -39,7 +39,7 @@
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]= "1" [rowspan]= "1">
                     <button mat-raised-button style="margin-right: 20px;">Cancelar</button>
-                    <button mat-raised-button color="primary">Cadastrar</button>
+                    <button type="submit" [disabled]="form.invalid" mat-raised-button color="primary">Cadastrar</button>
                 </mat-grid-tile>
             </mat-grid-list>
         </form>

@@ -24,4 +24,8 @@ export class UsuarioService {
   apagarUsuario(index: number){
     this.listUsuarios.splice(index, 1);
   }
+
+  adicionarUsuario(usuario: Usuario){
+    this.listUsuarios.unshift(usuario);
+  }
 }
