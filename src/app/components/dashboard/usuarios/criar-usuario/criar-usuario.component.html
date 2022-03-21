@@ -3,5 +3,45 @@
         <span >Adicionar Usuario</span>
     </mat-toolbar>
 
-    <mat-card style="margin-top: 10px">Simple card</mat-card>
+    <mat-card style="margin-top: 10px">
+        <form>
+            <mat-grid-list cols="4" rowHeight="70px">
+                <mat-grid-tile [colspan]= "1" [rowspan]= "1">
+                    <mat-form-field class="largura">
+                        <mat-label>CPF</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]= "3" [rowspan]= "5">
+                    <img src="./assets/img/logo.png">
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]= "1" [rowspan]= "1">
+                    <mat-form-field class="largura">
+                        <mat-label>Nome</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]= "1" [rowspan]= "1">
+                    <mat-form-field class="largura">
+                        <mat-label>Sobrenome</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]= "1" [rowspan]= "1">
+                    <mat-form-field class="largura">
+                        <mat-label>Sexo</mat-label>
+                        <mat-select>
+                          <mat-option *ngFor="let item of sexo" [value]="item">
+                            {{item}}
+                          </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]= "1" [rowspan]= "1">
+                    <button mat-raised-button style="margin-right: 20px;">Cancelar</button>
+                    <button mat-raised-button color="primary">Cadastrar</button>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </form>
+    </mat-card>
 </div>
