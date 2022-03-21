@@ -6,19 +6,12 @@ import { Usuario } from '../interfaces/usuario';
 })
 export class UsuarioService {
 
-  listUsuarios: Usuario[] = [
-    {cpf: '1', nome: 'Gabriel', sobrenome: 'Maciel', sexo: 'Masculino'},
-    {cpf: '2', nome: 'Juan', sobrenome: 'Gomes', sexo: 'Masculino'},
-    {cpf: '3', nome: 'Marta', sobrenome: 'Garcia', sexo: 'Feminino'},
-    {cpf: '4', nome: 'Victor', sobrenome: 'Lima', sexo: 'Masculino'},
-    {cpf: '5', nome: 'Maria', sobrenome: 'Mendes', sexo: 'Feminino'},
-    {cpf: '6', nome: 'João', sobrenome: 'Souza', sexo: 'Masculino'},
-  ];
+  listUsuarios: Usuario[] = [];
 
   constructor() { }
 
-  getUsuario(){
-    return this.listUsuarios.slice();
+  getUsuario(usuario: Usuario){
+    return this.listUsuarios = localStorage.getItem(id);
   }
 
   apagarUsuario(index: number){
@@ -27,5 +20,6 @@ export class UsuarioService {
 
   adicionarUsuario(usuario: Usuario){
     this.listUsuarios.unshift(usuario);
+    localStorage.setItem('id', JSON.stringify(this.listUsuarios));
   }
 }
