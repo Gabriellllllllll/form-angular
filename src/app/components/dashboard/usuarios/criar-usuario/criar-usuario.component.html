@@ -8,18 +8,12 @@
             <mat-grid-list cols="4" rowHeight="70px">
                 <mat-grid-tile [colspan]= "1" [rowspan]= "1">
                     <mat-form-field class="largura">
-                        <mat-label>CPF</mat-label>
-                        <input matInput formControlName="cpf">
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]= "3" [rowspan]= "5">
-                    <img src="./assets/img/logo.png">
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]= "1" [rowspan]= "1">
-                    <mat-form-field class="largura">
                         <mat-label>Nome</mat-label>
                         <input matInput formControlName="nome">
                     </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]= "3" [rowspan]= "6">
+                    <img src="./assets/img/logo.png">
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]= "1" [rowspan]= "1">
                     <mat-form-field class="largura">
@@ -29,12 +23,32 @@
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]= "1" [rowspan]= "1">
                     <mat-form-field class="largura">
-                        <mat-label>Sexo</mat-label>
-                        <mat-select formControlName="sexo">
-                          <mat-option *ngFor="let item of sexo" [value]="item">
-                            {{item}}
-                          </mat-option>
-                        </mat-select>
+                        <mat-label>CPF</mat-label>
+                        <input matInput formControlName="cpf">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]= "1" [rowspan]= "1">
+                    <mat-form-field class="largura">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]= "1" [rowspan]= "1">
+                    <mat-form-field class="largura">
+                        <mat-label>Empresa</mat-label>
+                        <input matInput formControlName="empresa">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]= "1" [rowspan]= "1">
+                    <mat-form-field class="largura">
+                        <mat-label>Setor</mat-label>
+                        <input matInput formControlName="setor">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]= "1" [rowspan]= "1">
+                    <mat-form-field class="largura">
+                        <mat-label>Cargo</mat-label>
+                        <input matInput formControlName="cargo">
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]= "1" [rowspan]= "1">

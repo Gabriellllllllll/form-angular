@@ -10,16 +10,27 @@ export class UsuarioService {
 
   constructor() { }
 
-  getUsuario(usuario: Usuario){
-    return this.listUsuarios = localStorage.getItem(id);
+  getUsuario(){
+    if(localStorage.getItem('id')){
+      const data = localStorage.getItem('id');
+      this.listUsuarios = JSON.parse(data as string);
+    }else{
+      this.listUsuarios = [];
+    }
+    return this.listUsuarios;
   }
 
   apagarUsuario(index: number){
     this.listUsuarios.splice(index, 1);
+    localStorage.setItem('id', JSON.stringify(this.listUsuarios));
   }
 
   adicionarUsuario(usuario: Usuario){
     this.listUsuarios.unshift(usuario);
     localStorage.setItem('id', JSON.stringify(this.listUsuarios));
+  }
+
+  editarUsuario(index: number){
+    
   }
 }

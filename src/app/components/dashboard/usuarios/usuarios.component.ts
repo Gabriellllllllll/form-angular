@@ -14,7 +14,7 @@ export class UsuariosComponent implements OnInit {
 
   listUsuarios: Usuario [] = [];
   
-  displayedColumns: string[] = ['cpf', 'nome', 'sobrenome', 'sexo', 'acoes'];
+  displayedColumns: string[] = ['cpf', 'nome', 'sobrenome', 'email', 'empresa', 'setor', 'cargo', 'acoes'];
   dataSource!: MatTableDataSource<any>; 
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -44,6 +44,11 @@ export class UsuariosComponent implements OnInit {
   apagarUsuario(index: number){
     console.log(index);
     this._usuarioService.apagarUsuario(index);
+    this.carregarUsuarios();
+  }
+
+  editarUsuario(index: number){
+    this._usuarioService.editarUsuario(index);
     this.carregarUsuarios();
   }
 

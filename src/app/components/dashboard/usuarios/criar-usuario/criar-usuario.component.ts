@@ -10,7 +10,6 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   styleUrls: ['./criar-usuario.component.css']
 })
 export class CriarUsuarioComponent implements OnInit {
-  sexo: any = ['Masculino', 'Feminino']
   form: FormGroup;
 
   constructor(private fb: FormBuilder, private _usuarioService: UsuarioService,
@@ -19,7 +18,10 @@ export class CriarUsuarioComponent implements OnInit {
       cpf: ['', Validators.required],
       nome: ['', Validators.required],
       sobrenome: ['', Validators.required],
-      sexo: ['', Validators.required],
+      email: ['', Validators.required],
+      empresa: [''],
+      setor: [''],
+      cargo: ['']
     })
   }
 
@@ -32,7 +34,10 @@ export class CriarUsuarioComponent implements OnInit {
       cpf: this.form.value.cpf,
       nome: this.form.value.nome,
       sobrenome: this.form.value.sobrenome,
-      sexo: this.form.value.sexo,
+      email: this.form.value.email,
+      empresa: this.form.value.empresa,
+      setor: this.form.value.setor,
+      cargo: this.form.value.cargo
     }
 
     this._usuarioService.adicionarUsuario(user);
