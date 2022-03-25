@@ -9,6 +9,9 @@ import { SharedModule } from './components/shared/shared.module';
 // Componentes
 import { LoginComponent } from './components/login/login.component';
 
+// Mask
+import { NgxMaskModule } from 'ngx-mask';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +21,10 @@ import { LoginComponent } from './components/login/login.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    NgxMaskModule.forRoot({
+      dropSpecialCharacters: false
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

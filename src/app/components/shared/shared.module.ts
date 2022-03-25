@@ -22,6 +22,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSelectModule } from '@angular/material/select';
 
+// Mask
+import { NgxMaskModule } from 'ngx-mask';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -42,7 +45,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatSortModule,
     MatCardModule,
     MatGridListModule,
-    MatSelectModule
+    MatSelectModule,
+    NgxMaskModule.forChild()
   ],
   exports: [
     MatSliderModule,
@@ -61,7 +65,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatSortModule,
     MatCardModule,
     MatGridListModule,
-    MatSelectModule
+    MatSelectModule,
+    NgxMaskModule
   ]
 })
 export class SharedModule { }

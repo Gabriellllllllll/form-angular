@@ -6,32 +6,34 @@ import { Usuario } from '../interfaces/usuario';
 })
 export class UsuarioService {
 
-  listUsuarios: Usuario[] = [];
-
   constructor() { }
 
-  getUsuario(){
-    if(localStorage.getItem('id')){
-      const data = localStorage.getItem('id');
-      this.listUsuarios = JSON.parse(data as string);
-    }else{
-      this.listUsuarios = [];
+  getUsuario(): Usuario[] {
+    const data = localStorage.getItem('id');
+
+    if(data){
+      return JSON.parse(data);
     }
-    return this.listUsuarios;
+
+    return [];
   }
 
-  getSingleUsuario(index: number){
+  getSingleUsuario(index: number): Usuario {
     return this.getUsuario()[index];
   }
 
-  apagarUsuario(index: number){
-    this.listUsuarios.splice(index, 1);
-    localStorage.setItem('id', JSON.stringify(this.listUsuarios));
+  apagarUsuario(index: number): void {
+    const usuarios = this.getUsuario();
+    usuarios.splice(index, 1);
+
+    localStorage.setItem('id', JSON.stringify(usuarios));
   }
 
-  adicionarUsuario(usuario: Usuario){
-    this.listUsuarios.unshift(usuario);
-    localStorage.setItem('id', JSON.stringify(this.listUsuarios));
+  adicionarUsuario(usuario: Usuario): void {
+    const usuarios = this.getUsuario();
+    usuarios.unshift(usuario);
+    if(usuario.cpf )
+    localStorage.setItem('id', JSON.stringify(usuarios));
   }
 
   editarUsuario(usuario: Usuario, index: number){

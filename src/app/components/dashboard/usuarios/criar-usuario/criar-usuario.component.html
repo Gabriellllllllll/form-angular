@@ -34,7 +34,7 @@
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                     <mat-form-field class="largura">
                         <mat-label>CPF</mat-label>
-                        <input matInput [formControl]="cpfFormControl" [errorStateMatcher]="matcher">
+                        <input matInput [formControl]="cpfFormControl" [errorStateMatcher]="matcher" mask="CPF_CNPJ">
                         <mat-error *ngIf="cpfvalid && !cpfFormControl.hasError('required')">
                             CPF Invalido
                         </mat-error>
