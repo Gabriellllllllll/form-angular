@@ -20,6 +20,10 @@ export class UsuarioService {
     return this.listUsuarios;
   }
 
+  getSingleUsuario(index: number){
+    return this.getUsuario()[index];
+  }
+
   apagarUsuario(index: number){
     this.listUsuarios.splice(index, 1);
     localStorage.setItem('id', JSON.stringify(this.listUsuarios));
@@ -30,7 +34,9 @@ export class UsuarioService {
     localStorage.setItem('id', JSON.stringify(this.listUsuarios));
   }
 
-  editarUsuario(index: number){
-    
+  editarUsuario(usuario: Usuario, index: number){
+    const allUsers = this.getUsuario();
+    allUsers[index] = usuario;
+    localStorage.setItem('id', JSON.stringify(allUsers));
   }
 }

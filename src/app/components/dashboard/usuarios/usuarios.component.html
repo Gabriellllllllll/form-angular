@@ -60,7 +60,7 @@
         <ng-container matColumnDef="acoes">
           <th mat-header-cell *matHeaderCellDef> </th>
           <td mat-cell *matCellDef="let element; let i = index" style="text-align: right">  
-            <a class="pointer" (click)= "editarUsuario(i)" style="color: #1f516f" matTooltip="Editar Usuario">
+            <a class="pointer" [routerLink]="'/dashboard/editar-usuario/'+i" style="color: #1f516f" matTooltip="Editar Usuario">
               <mat-icon>edit</mat-icon>
             </a>
             <a class="pointer" (click)= "apagarUsuario(i)" style="color: #e15639" matTooltip="Apagar Usuario">

@@ -1,75 +1,62 @@
 <div class="container">
     <mat-toolbar>
-        <span>Adicionar Usuario</span>
+        <span >Editar Usuario</span>
     </mat-toolbar>
 
     <mat-card style="margin-top: 10px">
         <form [formGroup]="form" (ngSubmit)="adicionarUsuario()">
             <mat-grid-list cols="4" rowHeight="70px">
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-grid-tile [colspan]= "1" [rowspan]= "1">
                     <mat-form-field class="largura">
                         <mat-label>Nome</mat-label>
                         <input matInput formControlName="nome">
                     </mat-form-field>
                 </mat-grid-tile>
-                <mat-grid-tile [colspan]="3" [rowspan]="6">
+                <mat-grid-tile [colspan]= "3" [rowspan]= "6">
                     <img src="./assets/img/logo.png">
                 </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-grid-tile [colspan]= "1" [rowspan]= "1">
                     <mat-form-field class="largura">
                         <mat-label>Sobrenome</mat-label>
                         <input matInput formControlName="sobrenome">
                     </mat-form-field>
                 </mat-grid-tile>
-
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-grid-tile [colspan]= "1" [rowspan]= "1">
                     <mat-form-field class="largura">
                         <mat-label>CPF</mat-label>
                         <input matInput formControlName="cpf">
                     </mat-form-field>
-
                 </mat-grid-tile>
-
-
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-grid-tile [colspan]= "1" [rowspan]= "1">
                     <mat-form-field class="largura">
                         <mat-label>Email</mat-label>
-                        <input matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
-                            placeholder="Ex. exemplo@gmail.com">
-                        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                            Insira um email valido
-                        </mat-error>
-                        <mat-error *ngIf="emailFormControl.hasError('required')">
-                            Email <strong>obrigatório</strong>
-                        </mat-error>
+                        <input matInput formControlName="email">
                     </mat-form-field>
                 </mat-grid-tile>
-
-
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-grid-tile [colspan]= "1" [rowspan]= "1">
                     <mat-form-field class="largura">
                         <mat-label>Empresa</mat-label>
                         <input matInput formControlName="empresa">
                     </mat-form-field>
                 </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-grid-tile [colspan]= "1" [rowspan]= "1">
                     <mat-form-field class="largura">
                         <mat-label>Setor</mat-label>
                         <input matInput formControlName="setor">
                     </mat-form-field>
                 </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-grid-tile [colspan]= "1" [rowspan]= "1">
                     <mat-form-field class="largura">
                         <mat-label>Cargo</mat-label>
                         <input matInput formControlName="cargo">
                     </mat-form-field>
                 </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <mat-grid-tile [colspan]= "1" [rowspan]= "1">
                     <a href="/dashboard/usuarios" mat-raised-button style="margin-right: 20px;">Cancelar</a>
-                    <button type="submit" [disabled]="form.invalid" mat-raised-button color="primary">
-                        Cadastrar</button>
+                    <button type="submit" [disabled]="form.invalid" mat-raised-button color="primary">Salvar</button>
                 </mat-grid-tile>
             </mat-grid-list>
         </form>
     </mat-card>
 </div>
+

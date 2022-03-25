@@ -42,13 +42,7 @@ export class UsuariosComponent implements OnInit {
   }
 
   apagarUsuario(index: number){
-    console.log(index);
     this._usuarioService.apagarUsuario(index);
-    this.carregarUsuarios();
-  }
-
-  editarUsuario(index: number){
-    this._usuarioService.editarUsuario(index);
     this.carregarUsuarios();
   }
 
