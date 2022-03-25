@@ -23,15 +23,24 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class CriarUsuarioComponent implements OnInit {
   form: FormGroup;
 
+  cpfvalid(){
+    if(!CpfValidator){
+      return CpfValidator;
+    }else{
+      return CpfValidator;
+    }
+  }
   cpfFormControl = new FormControl('', [Validators.required, CpfValidator.cpfValido]);
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-  matcher = new MyErrorStateMatcher()
+  nomeFormControl = new FormControl('', [Validators.required]);
+  sobrenomeFormControl = new FormControl('', [Validators.required]);
+  matcher = new MyErrorStateMatcher();
 
   constructor(private fb: FormBuilder, private _usuarioService: UsuarioService, private router: Router) {
     this.form = this.fb.group({
       cpf: this.cpfFormControl,
-      nome: ['', Validators.required],
-      sobrenome: ['', Validators.required],
+      nome: this.nomeFormControl,
+      sobrenome: this.sobrenomeFormControl,
       email: this.emailFormControl,
       empresa: [''],
       setor: [''],

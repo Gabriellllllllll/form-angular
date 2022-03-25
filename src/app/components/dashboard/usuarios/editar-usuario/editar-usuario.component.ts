@@ -10,28 +10,28 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   styleUrls: ['./editar-usuario.component.css']
 })
 export class EditarUsuarioComponent implements OnInit {
-  form: FormGroup;
   
+  form!: FormGroup;
+
   index = 0;
 
   constructor(private fb: FormBuilder, private _usuarioService: UsuarioService,
-    private router: Router, private routerUser: ActivatedRoute) {
-      const usuario = this._usuarioService.getSingleUsuario(this.index);
-    this.form = this.fb.group({
-      cpf: [usuario.cpf, Validators.required],
-      nome: [usuario.nome, Validators.required],
-      sobrenome: [usuario.sobrenome, Validators.required],
-      email: [usuario.email, Validators.required],
-      empresa: [usuario.empresa],
-      setor: [usuario.setor],
-      cargo: [usuario.cargo]
-    })
-  }
+    private router: Router, private routerUser: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.routerUser.paramMap.subscribe((params) => { 
+    this.routerUser.paramMap.subscribe((params) => {
       this.index = params.get('index') as any;
-     });
+      const usuario = this._usuarioService.getSingleUsuario(this.index);
+      this.form = this.fb.group({
+        cpf: [usuario.cpf, Validators.required],
+        nome: [usuario.nome, Validators.required],
+        sobrenome: [usuario.sobrenome, Validators.required],
+        email: [usuario.email, Validators.required],
+        empresa: [usuario.empresa],
+        setor: [usuario.setor],
+        cargo: [usuario.cargo]
+      })
+    });
   }
 
   adicionarUsuario() {
