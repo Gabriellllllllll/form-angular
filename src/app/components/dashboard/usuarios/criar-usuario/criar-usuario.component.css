@@ -1,3 +1,16 @@
 .largura{
     width: 80%;
 }
+
+@media (max-width: 600px) {
+    .container{
+        width: 95%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .logo {
+        width: 180px;
+        height: 150px;
+    }
+}

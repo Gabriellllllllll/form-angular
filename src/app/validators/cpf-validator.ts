@@ -1,7 +1,8 @@
 import { FormControl, Validators } from '@angular/forms';
 
 export class CpfValidator {
-  static cpfValido = (control: FormControl): Validators => {
+  static cpfValido(control: FormControl): Validators {
+
     // Pega o valor que vem do controlador
     const cpfString = String(control.value).replace(/\D/g, '');
     // Para verificar o digito do cpf

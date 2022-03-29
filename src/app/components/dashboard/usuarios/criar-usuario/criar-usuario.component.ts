@@ -6,12 +6,12 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { CpfValidator } from 'src/app/validators/cpf-validator';
 
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
+// export class MyErrorStateMatcher implements ErrorStateMatcher {
+//   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+//     const isSubmitted = form && form.submitted;
+//     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+//   }
+// }
 
 
 @Component({
@@ -20,8 +20,13 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./criar-usuario.component.css']
 })
 
-export class CriarUsuarioComponent implements OnInit {
+export class CriarUsuarioComponent implements OnInit, ErrorStateMatcher  {
   form: FormGroup;
+
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
 
   cpfvalid(){
     if(!CpfValidator){
@@ -34,7 +39,7 @@ export class CriarUsuarioComponent implements OnInit {
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   nomeFormControl = new FormControl('', [Validators.required]);
   sobrenomeFormControl = new FormControl('', [Validators.required]);
-  matcher = new MyErrorStateMatcher();
+  matcher = this;
 
   constructor(private fb: FormBuilder, private _usuarioService: UsuarioService, private router: Router) {
     this.form = this.fb.group({
@@ -49,6 +54,18 @@ export class CriarUsuarioComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.cpfFormControl.valueChanges.subscribe((value) => {
+      if(this.cpfFormControl.valid){
+        const usuarios = this._usuarioService.getUsuario()
+        const isUsuario = usuarios.find((f) => f.cpf === value)
+        if(isUsuario){
+          this.cpfFormControl.setErrors({
+            cpf_cadastrado: "Cpf ja cadastrado!"
+          })
+        }
+      }
+      console.log(value);
+    })
   }
 
   adicionarUsuario() {

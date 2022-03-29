@@ -18,7 +18,7 @@
                 </mat-grid-tile>
                 
                 <mat-grid-tile [colspan]="3" [rowspan]="6">
-                    <img src="./assets/img/logo.png">
+                    <img src="./assets/img/logo.png" class="logo">
                 </mat-grid-tile>
                 
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
@@ -35,14 +35,16 @@
                     <mat-form-field class="largura">
                         <mat-label>CPF</mat-label>
                         <input matInput [formControl]="cpfFormControl" [errorStateMatcher]="matcher" mask="CPF_CNPJ">
-                        <mat-error *ngIf="cpfvalid && !cpfFormControl.hasError('required')">
+                        <mat-error *ngIf="cpfvalid && !cpfFormControl.hasError('required') && !cpfFormControl.hasError('cpf_cadastrado')">
                             CPF Invalido
                         </mat-error>
                         <mat-error *ngIf="cpfFormControl.hasError('required')">
                             CPF <strong>obrigatório</strong>
                         </mat-error>
+                        <mat-error *ngIf="cpfFormControl.hasError('cpf_cadastrado')">
+                            CPF já <strong>Cadastrado!</strong>
+                        </mat-error>
                     </mat-form-field>
-
                 </mat-grid-tile>
 
                 <mat-grid-tile [colspan]="1" [rowspan]="1">

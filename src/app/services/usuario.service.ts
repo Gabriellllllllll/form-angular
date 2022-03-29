@@ -32,8 +32,9 @@ export class UsuarioService {
   adicionarUsuario(usuario: Usuario): void {
     const usuarios = this.getUsuario();
     usuarios.unshift(usuario);
-    if(usuario.cpf )
-    localStorage.setItem('id', JSON.stringify(usuarios));
+    if(usuario.cpf) {
+      localStorage.setItem('id', JSON.stringify(usuarios));
+    }
   }
 
   editarUsuario(usuario: Usuario, index: number){
